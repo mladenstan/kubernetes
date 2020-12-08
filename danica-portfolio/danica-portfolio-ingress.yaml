@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: danica-portfolio
+  namespace: kube-system
+spec:
+  rules:
+  - host: danicastankovic.local.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: danica-portfolio
+          servicePort: 80

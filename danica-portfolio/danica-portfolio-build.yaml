@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko-docker
+  namespace: kube-system
+spec:
+  restartPolicy: Never
+  containers:
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:latest
+    imagePullPolicy: Always
+    args: ["--dockerfile=Dockerfile",
+            "--context=git://github.com/mladenstan/danica-portfolio.git",
+            "--destination=quay.io/mladenstan/kaniko-demo"]
+    volumeMounts:
+      - name: kaniko-secret
+        mountPath: /kaniko/.docker
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+  volumes:
+    - name: kaniko-secret
+      secret:
+        secretName: regcred
+        items:
+          - key: .dockerconfigjson
+            path: config.json

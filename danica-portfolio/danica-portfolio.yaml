@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: danica-portfolio
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: danica-portfolio
+  template:
+    metadata:
+      labels:
+        app: danica-portfolio
+    spec:
+      containers:
+      - name: danica-portfolio
+        image: quay.io/mladenstan/kaniko-demo
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets: 
+      - name: regcred

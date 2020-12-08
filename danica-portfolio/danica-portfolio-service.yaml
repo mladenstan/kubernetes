@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: danica-portfolio
+  namespace: kube-system
+spec:
+  selector:
+    app: danica-portfolio
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
