@@ -36,3 +36,6 @@ kubectl exec --stdin --tty metricbeat-t2b7h -- /bin/bash
 
 # Delete all evicted pods from all namespaces
 kubectl get pods --all-namespaces | grep Evicted | awk '{print $2 " --namespace=" $1}' | xargs kubectl delete pod
+
+# Delete all succeeded pods from all namespaces
+oc delete pod --field-selector=status.phase==Succeeded --all-namespaces
