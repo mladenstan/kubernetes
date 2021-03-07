@@ -1,0 +1,2 @@
+# Debugging kubernetes deployment
+https://blog.thundra.io/debugging-kubernetes-deployments
