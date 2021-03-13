@@ -9,3 +9,9 @@ helm rollback --recreate-pods elasticsearch 1
 
 # Da vidimo vrednosti helm-a koji je korisnik podesio (umesto values moze da se koristi all)
 helm get values release
+
+# Instalacija aplikacie
+helm install --namespace gitlab-runner gitlab-runner -f /home/danica/helm/gitlab-runner/values.yaml gitlab/gitlab-runner
+
+# Primena izmena kada izmenimo values fajl
+helm upgrade --namespace gitlab-runner gitlab-runner -f /home/danica/helm/gitlab-runner/values.yaml gitlab/gitlab-runner
