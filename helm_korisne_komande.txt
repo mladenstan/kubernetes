@@ -1,3 +1,9 @@
+# Lista svih instaliranih aplikacija
+helm list
+
+# Brisanje aplikacije
+helm uninstall gitlab-runner
+
 # Update helm revizije zadjeno sa restartom pod-ova
 helm rollback --recreate-pods elasticsearch 1
 
