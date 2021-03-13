@@ -1,0 +1,5 @@
+# Update helm revizije zadjeno sa restartom pod-ova
+helm rollback --recreate-pods elasticsearch 1
+
+# Da vidimo vrednosti helm-a koji je korisnik podesio (umesto values moze da se koristi all)
+helm get values release
